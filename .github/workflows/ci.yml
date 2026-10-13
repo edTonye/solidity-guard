@@ -21,8 +21,9 @@ jobs:
           python -m pip install --upgrade pip
           pip install -e ".[dev]"
 
-      - name: Install solc
-        run: python -m solidity_guard.install_compiler
+      -       - name: Install solc
+        run: |
+          python -c "import solcx; solcx.install_solc('0.8.20'); solcx.install_solc('0.7.0')"
 
       - name: Run tests
         run: pytest -v
